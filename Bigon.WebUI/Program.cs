@@ -14,11 +14,9 @@ namespace Bigon.WebUI
 
             var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 
-            builder.Services.AddDbContext<DataContext>(options =>
-            {
-                options.UseSqlServer(connectionString, x => x.MigrationsHistoryTable("My_Migrations"));
-            });
+            builder.Services.AddDbContext<DataContext>(options => options.UseSqlServer(connectionString, x => x.MigrationsHistoryTable("My_Migrations")));
 
+            builder.Services.AddRouting(options => options.LowercaseUrls = true);
 
 
 
